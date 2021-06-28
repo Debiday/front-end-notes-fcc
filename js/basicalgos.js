@@ -1,7 +1,7 @@
 // -------Adapted from FCC--------
-// -------------------------------
+// ---------------------------------------------------
 // Confirm the Ending
-// -------------------------------
+// ---------------------------------------------------
 function confirmEnding(str, target) {
     if (str.slice(-target.length) == target) {
       return true;
@@ -12,9 +12,9 @@ function confirmEnding(str, target) {
 console.log(confirmEnding("Bastian", "n"));
 
 
-// -------------------------------
+// ---------------------------------------------------
 // Truncate a String
-// -------------------------------
+// ---------------------------------------------------
 function truncateString(str, num) {
     if (str.length > num) {
     return str.slice(0, num) + "...";
@@ -26,9 +26,10 @@ function truncateString(str, num) {
   console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
   console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length + 2));
 
-// -------------------------------
+  
+// ---------------------------------------------------
 // Check num in arr passes func
-// -------------------------------
+// ---------------------------------------------------
 function findElement(arr, func) {
 let num = 0;
 
@@ -42,9 +43,9 @@ for (let i = 0; i < arr.length; i++) {
 return undefined;
 }
 
-// -------------------------------
+// ---------------------------------------------------
 // Check Boolean (typeof)
-// -------------------------------
+// ---------------------------------------------------
 function booWho(bool) {
     if (typeof(bool) == "boolean") {
     return true
@@ -55,9 +56,9 @@ function booWho(bool) {
 booWho(null);
 
 
-// -------------------------------
+// ---------------------------------------------------
 // Title case a sentence
-// -------------------------------
+// ---------------------------------------------------
 function titleCase(str) {
     let words = str.split(" ");
     let result = "";
@@ -69,11 +70,23 @@ function titleCase(str) {
   
   console.log(titleCase("I'm a little tea pot"));
 
-  
-// -------------------------------
-// 
-// -------------------------------
 
-// -------------------------------
+// ---------------------------------------------------
+// Slice and splice (insert at n)
+// ---------------------------------------------------
+function frankenSplice(arr1, arr2, n) {
+    let result = [];
+    result.push.apply(result, arr2.slice(0,n));
+    result.push.apply(result, arr1);
+    result.push.apply(result, arr2.slice(n));
+    return result;
+  }
+  
+  console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
+  console.log(frankenSplice(["claw", "tentacle"], ["head", "shoulders", "knees", "toes"], 2));
+  console.log(frankenSplice([1, 2], ["a", "b"], 1));
+
+
+// ---------------------------------------------------
 // 
-// -------------------------------
+// ---------------------------------------------------
