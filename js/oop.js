@@ -73,10 +73,94 @@ function Dog(name) {
 
 
 // ---------------------------------------------------
+// TODO: Separate ownprops and prototype props
+// ---------------------------------------------------
+function Dog(name) {
+    this.name = name;
+  }
+  
+  Dog.prototype.numLegs = 4;
+  
+  let beagle = new Dog("Snoopy");
+  
+  let ownProps = [];
+  let prototypeProps = [];
+  
+  // Only change code below this line
+  
+  for (let property in beagle) {
+    if(beagle.hasOwnProperty(property)) {
+      ownProps.push(property);
+    } else {
+      prototypeProps.push(property);
+    }
+  }
+
+
+// ---------------------------------------------------
+// TODO: Making sure prototype is linked to constructor
+// ---------------------------------------------------
+function Dog(name) {
+    this.name = name;
+  }
+  
+  // Only change code below this line
+  Dog.prototype = {
+    constructor: Dog,//Note**
+    numLegs: 4,
+    eat: function() {
+      console.log("nom nom nom");
+    },
+    describe: function() {
+      console.log("My name is " + this.name);
+    }
+  };
+//Check prototype of
+//e.g. Dog.prototype.isPrototypeOf(beagle);
+
+
+//----------------------------------------------------
+// TODO: DRY Inheritance
+// ---------------------------------------------------
+function Cat(name) {
+    this.name = name;
+  }
+  
+  Cat.prototype = {
+    constructor: Cat,
+  };
+  
+  function Bear(name) {
+    this.name = name;
+  }
+  
+  Bear.prototype = {
+    constructor: Bear,
+  };
+  
+  function Animal() { }
+  
+  Animal.prototype = {
+    constructor: Animal,
+    eat: function() {
+    console.log("nom nom nom");
+  } 
+  };
+
+  
+//----------------------------------------------------
 // TODO:
 // ---------------------------------------------------
 
+//----------------------------------------------------
+// TODO:
 // ---------------------------------------------------
+
+//----------------------------------------------------
+// TODO:
+// ---------------------------------------------------
+
+//----------------------------------------------------
 // TODO:
 // ---------------------------------------------------
 
