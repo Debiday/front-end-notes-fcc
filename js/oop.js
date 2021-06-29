@@ -137,7 +137,8 @@ function Cat(name) {
   Bear.prototype = {
     constructor: Bear,
   };
-  
+
+//supertype
   function Animal() { }
   
   Animal.prototype = {
@@ -147,22 +148,91 @@ function Cat(name) {
   } 
   };
 
-  
-//----------------------------------------------------
-// TODO:
-// ---------------------------------------------------
 
 //----------------------------------------------------
-// TODO:
+// TODO: Inherit behaviour from a supertype
 // ---------------------------------------------------
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+// Only change code below this line
+
+let duck = Object.create(Animal.prototype); // Change this line
+let beagle = Object.create(Animal.prototype); // Change this line
+
 
 //----------------------------------------------------
-// TODO:
+// TODO: Set child's prototype to an instance of the parent
 // ---------------------------------------------------
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Dog() { }
+
+// Only change code below this line
+Dog.prototype = Object.create(Animal.prototype);
+
+let beagle = new Dog();
+
 
 //----------------------------------------------------
-// TODO:
+// TODO: Reset inherited constructor property
 // ---------------------------------------------------
+function Animal() { }
+function Bird() { }
+function Dog() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype);
+
+// Only change code below this line
+// Reset constructor to nearest parent?
+Bird.prototype.constructor = Bird;
+Dog.prototype.constructor = Dog;
+
+
+let duck = new Bird();
+let beagle = new Dog();
+
+
+//----------------------------------------------------
+// TODO: Add methods after inheritance
+// ---------------------------------------------------
+function Animal() { }
+Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+function Dog() { }
+
+// Only change code below this line
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.bark = function() {
+  console.log("Woof!");
+}
+
+
+// Only change code above this line
+
+let beagle = new Dog();
+
+
+console.log(beagle.bark());
+console.log(beagle.eat());
+// Now beagle has both the eat and bark methods
+
 
 //----------------------------------------------------
 // TODO:
