@@ -108,6 +108,8 @@ function bouncer(arr) {
 // ---------------------------------------------------
 function getIndexToIns(arr, num) {
     arr.push(num);
+    //using function expression
+    //even shorter: numbers.sort((a, b) => a - b);
     function compareNumbers(a, b) {
     return a - b;
   }
@@ -120,12 +122,45 @@ function getIndexToIns(arr, num) {
   console.log(getIndexToIns([2, 20, 10], 19)); //2
 
 // ---------------------------------------------------
-// 
+// True if the string in [0] contains all of the letters in [1].
 // ---------------------------------------------------
+function mutation(arr) {
+    let word_length = arr[1].length;
+    arr[0] = arr[0].toLowerCase()
+    arr[1] = arr[1].toLowerCase()
+    let result = true;
+    for (let i = 0; i < word_length; i++) {
+      console.log(arr[0].indexOf(arr[1][i]));
+      if (arr[0].indexOf(arr[1][i]) == -1) {
+          result = false;
+      } else {
+        continue;
+      }
+      } return result;
+    }
+  
+  console.log(mutation(["hello", "hey"])); //false
+  console.log(mutation(["Noel", "Ole"])); //true
+  console.log(mutation(["floor", "for"])); //true
+
 
 //----------------------------------------------------
-// 
+// Split an array into lengths of size
 // ---------------------------------------------------
+function chunkArrayInGroups(arr, size) {
+  let final_arr = [];
+  for (let i = 0; i < arr.length; i+=size) {
+      final_arr.push(arr.slice(i, i+size));
+    } 
+  return final_arr;
+}
+
+console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 2));
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 4));
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 3));
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 2)); 
+
 
 // ---------------------------------------------------
 // 
