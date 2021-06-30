@@ -221,7 +221,7 @@ Dog.prototype.constructor = Dog;
 
 Dog.prototype.bark = function() {
   console.log("Woof!");
-}
+} //received its own methods by chaining them onto its prototype
 
 
 // Only change code above this line
@@ -235,5 +235,117 @@ console.log(beagle.eat());
 
 
 //----------------------------------------------------
-// TODO:
+// TODO: Override inherited methods
 // ---------------------------------------------------
+function Bird() { }
+
+Bird.prototype.fly = function() { return "I am flying!"; };
+
+function Penguin() { }
+Penguin.prototype = Object.create(Bird.prototype);
+Penguin.prototype.constructor = Penguin;
+
+// Only change code below this line
+
+Penguin.prototype.fly = function() {
+  return "Alas, this is a flightless bird."
+};
+
+// Only change code above this line
+
+let penguin = new Penguin();
+console.log(penguin.fly());
+
+//----------------------------------------------------
+// TODO: Mixins, add common behaviour btw loosely related objects
+// ---------------------------------------------------
+let bird = {
+    name: "Donald",
+    numLegs: 2
+  };
+  
+  let boat = {
+    name: "Warrior",
+    type: "race-boat"
+  };
+  
+  // Only change code below this line
+  let glideMixin = function(obj) {
+    obj.glide = function() {
+      console.log("Gliding, wooosh!");
+    }
+  }
+  
+  glideMixin(bird);
+  glideMixin(boat);
+  
+  bird.glide();
+  boat.glide();
+
+
+//----------------------------------------------------
+// TODO: Closures and private variables/ methods
+// ---------------------------------------------------
+function Bird() {
+    let weight = 15;
+  
+    this.getWeight = function() {
+      return weight;
+    };
+  }
+  
+  let ducky = new Bird();
+  console.log(ducky.getWeight());
+
+
+//----------------------------------------------------
+// TODO: Immediately invoked function expression
+// ---------------------------------------------------
+function makeNest() {
+    console.log("A cozy nest is ready");
+  }
+
+//VS
+
+  (function () {
+    console.log("A cozy nest is ready");
+  })();
+
+
+//----------------------------------------------------
+// TODO: Combine two mixins to create a module
+// ---------------------------------------------------
+let isCuteMixin = function(obj) {
+    obj.isCute = function() {
+      return true;
+    };
+  };
+  let singMixin = function(obj) {
+    obj.sing = function() {
+      console.log("Singing to an awesome tune");
+    };
+  };
+
+  //VS
+
+  let funModule = (function () {
+    return {
+      isCuteMixin: function(obj) {
+        obj.glide = function() {
+          console.log("Gliding on the water");
+        };
+      },
+      singMixin: function(obj) {
+        obj.sing = function() {
+          console.log("Singing to an awesome tune");
+        };
+      }
+    }
+  })();
+
+//How to use it
+//motionModule.glideMixin(duck);
+//duck.glide();
+
+
+// End-of-notes
