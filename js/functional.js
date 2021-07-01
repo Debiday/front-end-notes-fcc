@@ -102,11 +102,46 @@ function incrementer (fixedValue) {
 }
 
 console.log(incrementer(fixedValue));
-
+//Important: Declare function parameters - any computation inside a function depends only
+//on the arguments passed to the function, and not on any global object or variable.
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Refactor Global Variables Out of FunctionsPassed
 // ---------------------------------------------------
+// The global variable
+var bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+// Change code below this line
+// Making sure that the global array bookList is not changed inside either function
+// Add as parameters/arguments, then copy onto a new array inside the function to preserve its value
+function add (bookList, bookName) {
+  let newBookList = [...bookList];
+  newBookList.push(bookName);
+  return newBookList;
+  
+  // Change code above this line
+}
+
+
+// Change code below this line
+function remove (bookList, bookName) {
+  let newBookList = [...bookList];
+  var book_index = bookList.indexOf(bookName);
+  if (book_index >= 0) {
+
+    newBookList.splice(book_index, 1);
+    return newBookList;
+
+    // Change code above this line
+    }
+}
+
+var newBookList = add(bookList, 'A Brief History of Time');
+var newerBookList = remove(bookList, 'On The Electrodynamics of Moving Bodies');
+var newestBookList = remove(add(bookList, 'A Brief History of Time'), 'On The Electrodynamics of Moving Bodies');
+
+console.log(bookList);
+
 
 // ---------------------------------------------------
 // TODO: 
