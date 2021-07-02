@@ -127,15 +127,39 @@ function getRating(watchList){
     return averageRating;
   }
   console.log(getRating(watchList));
+
+
+// ---------------------------------------------------
+// TODO: Square the numbers in the list that are positive integers (not decimal)
+// ---------------------------------------------------
+const squareList = arr => {
+    // Only change code below this line
+    let filteredList = arr
+      .filter(num => num >= 0 && num % parseInt(num)===0)
+      .map(num => Math.pow(num, 2))
+        return filteredList
   
+    // Only change code above this line
+  };
+  
+  const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+  console.log(squareList([4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2]));
+  console.log(squaredIntegers);
+
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Sort in alphabetical order
 // ---------------------------------------------------
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
+function alphabeticalOrder(arr) {
+    // Only change code below this line
+    return arr.sort(function(a,b) {
+      return a === b ? 0 : a < b ? -1 : 1;
+    })
+  
+    // Only change code above this line
+  }
+  console.log(alphabeticalOrder(["a", "d", "c", "a", "z", "g"]));
+  
 
 // ---------------------------------------------------
 // TODO: 
