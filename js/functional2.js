@@ -159,47 +159,103 @@ function alphabeticalOrder(arr) {
     // Only change code above this line
   }
   console.log(alphabeticalOrder(["a", "d", "c", "a", "z", "g"]));
+
+
+// ---------------------------------------------------
+// TODO: Return a Sorted Array Without Changing the Original Array, CONCAT!
+// ---------------------------------------------------
+var globalArray = [5, 6, 3, 2, 9];
+function nonMutatingSort(arr) {
+  // Only change code below this line
+  return [].concat(arr).sort(function(a,b) {
+    return a === b ? 0 : a < b ? -1 : 1;
+  })
+
+
+
+  // Only change code above this line
+}
+console.log(nonMutatingSort(globalArray));
+
+
+// ---------------------------------------------------
+// TODO: Split string on non-alphanumeric
+// ---------------------------------------------------
+function splitify(str) {
+    // Only change code below this line
+    let result = str.split(/[^A-Za-z]/);
+    return result;
+  
+    // Only change code above this line
+  }
+  console.log(splitify("Hello World,I-am code"));
+
+
+// ---------------------------------------------------
+// TODO: Sentensify
+// ---------------------------------------------------
+function sentensify(str) {
+    let split = str.split(/[^A-Za-z]/);
+    return split.join(" ");
+}
+console.log(sentensify("May-the-force-be-with-you"));
+
+// ---------------------------------------------------
+// TODO: Return URL slug with filter
+// ---------------------------------------------------
+// Only change code below this line
+function urlSlug(title) {
+    let lower = title.toLowerCase();
+    let split = lower.split(/[^A-Za-z]/);  
+    let cleanArray = split.filter(Boolean);
+    let join = cleanArray.join("-");
+    return join;
+  }
+  // Only change code above this line
+  
+  console.log(urlSlug(" Winter Is  Coming"));
+
+
+// ---------------------------------------------------
+// TODO: Check positive
+// ---------------------------------------------------
+function checkPositive(arr) {
+    // Only change code below this line
+    return arr.every(function(num) {
+      return num >= 0;
+    });
+  
+  
+    // Only change code above this line
+  }
+  console.log(checkPositive([1, 2, 3, -4, 5]));
+//or   return arr.every(val => val > 0);
+
+// ---------------------------------------------------
+// TODO: Check SOME positive number
+// ---------------------------------------------------
+function checkPositive(arr) {
+    // Only change code below this line
+    return arr.some(function(num) {
+      return num > 0;
+    });
+  
+    // Only change code above this line
+  }
+  
+  console.log(checkPositive([1, 2, 3, -4, 5]));
   
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Currying and partial application
 // ---------------------------------------------------
-
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
-
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
-
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
-
-// ---------------------------------------------------
-// TODO: 
-// ---------------------------------------------------
+function add(x) {
+    // Only change code below this line
+    return function(y) {
+      return function(z) {
+        return x + y + z;
+      }
+    }
+    // Only change code above this line
+  }
+  console.log(add(10)(20)(30));
