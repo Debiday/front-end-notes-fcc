@@ -183,9 +183,7 @@ console.log(nonMutatingSort(globalArray));
 // ---------------------------------------------------
 function splitify(str) {
     // Only change code below this line
-    let result = str.split(/[^A-Za-z]/);
-    return result;
-  
+    return str.split(/[^A-Za-z]/);
     // Only change code above this line
   }
   console.log(splitify("Hello World,I-am code"));

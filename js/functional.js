@@ -303,6 +303,7 @@ Array.prototype.myMap = function(callback) {
 var new_s = s.myMap(function(item) {
   return item * 2;
 });
+// this refers to s
 
 
 // ---------------------------------------------------
@@ -320,7 +321,13 @@ var new_s = s.myMap(function(item) {
   .filter(movie => {
         return parseFloat(movie.rating) >= 8.0;
       });
-  
+      
+//   let filteredList = watchList
+//   .map(movie => ({
+//     title : movie["Title"], 
+//     rating : movie["imdbRating"]}))
+//   .filter(movie => {return parseFloat(movie.rating) >= 8.0});
+ 
   
   // Only change code above this line
   
