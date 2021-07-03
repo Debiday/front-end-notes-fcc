@@ -203,15 +203,14 @@ console.log(sentensify("May-the-force-be-with-you"));
 // ---------------------------------------------------
 // Only change code below this line
 function urlSlug(title) {
-    let lower = title.toLowerCase();
-    let split = lower.split(/[^A-Za-z]/);  
-    let cleanArray = split.filter(Boolean);
-    let join = cleanArray.join("-");
-    return join;
+    return title
+        .toLowerCase()
+        .split(" ")
+        .filter(Boolean)
+        .join('-');
   }
   // Only change code above this line
-  
-  console.log(urlSlug(" Winter Is  Coming"));
+  urlSlug("Winter Is Coming")
 
 
 // ---------------------------------------------------
