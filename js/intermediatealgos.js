@@ -17,12 +17,27 @@ function sumAll(arr) {
   
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Sort by length
 // ---------------------------------------------------
+function diffArray(arr1, arr2) {
+    let arr = [[...arr1], [...arr2]];
+    let unique = arr
+      .sort(function(a,b) {return a.length - b.length;})
+    return unique;
+  }
 
+  
 // ---------------------------------------------------
-// TODO: 
+// TODO: Diff two or more arrays (concat, filter)
 // ---------------------------------------------------
+function diffArray(arr1, arr2) {
+    return arr1
+      .concat(arr2)
+      .filter(item => !arr1.includes(item) || !arr2.includes(item));
+  }
+  
+  diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+  
 
 // ---------------------------------------------------
 // TODO: 
