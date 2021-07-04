@@ -37,11 +37,24 @@ function diffArray(arr1, arr2) {
   }
   
   diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
-  
+
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: (Using the arguments object) Remove values in second array
 // ---------------------------------------------------
+function destroyer(arr) {
+    let final = arguments[0];
+    let remove = [...arguments].slice(1)
+    return final
+      .filter(function(item) {
+    return remove.indexOf(item) === -1;
+  })
+  }
+  
+  console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+  console.log(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
+  console.log(destroyer(["tree", "hamburger", 53], "tree", 53));
+
 
 // ---------------------------------------------------
 // TODO: 
