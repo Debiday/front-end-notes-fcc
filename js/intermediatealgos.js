@@ -81,8 +81,27 @@ whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: 
 
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Spinal Tap Case (all-lowercase-words-joined)
 // ---------------------------------------------------
+function spinalCase(str) {
+  let nonAlpha = str.replace(/[^A-Za-z]/g, " ");
+  let zeroCapitalize = nonAlpha.charAt(0).toUpperCase() + nonAlpha.slice(1);
+  let split = zeroCapitalize.split(" ");
+  let capitalize = [];
+  for(let i = 0; i < split.length; i ++) {
+    capitalize.push(split[i].charAt(0).toUpperCase() + split[i].slice(1));
+  }
+  let joined = capitalize.join("")
+  let capitalSplit = joined.split(/(?=[A-Z])/);
+  console.log(capitalSplit)
+  let hyphen = capitalSplit.join("-");
+  return hyphen.toLowerCase();
+  }
+
+console.log(spinalCase('This Is Spinal Tap'));
+console.log(spinalCase("The_Andy_Griffith_Show"));
+console.log(spinalCase("thisIsSpinalTap"));
+console.log(spinalCase("Teletubbies say Eh-oh"));
 
 // ---------------------------------------------------
 // TODO: 
