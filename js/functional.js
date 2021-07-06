@@ -316,7 +316,7 @@ var new_s = s.myMap(function(item) {
         return {
       title: movie["Title"],
       rating: movie["imdbRating"]
-    };
+    }; 
     })
   .filter(movie => {
         return parseFloat(movie.rating) >= 8.0;

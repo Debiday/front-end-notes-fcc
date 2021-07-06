@@ -57,8 +57,28 @@ function destroyer(arr) {
 
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Filter object values in collection
 // ---------------------------------------------------
+function whatIsInAName(collection, source) {
+  let srcKeys = Object.keys(source);
+  return collection
+  //Collection becomes obj here, rmb to not use collection variable!
+    .filter(function(obj){
+      for(let i = 0; i < srcKeys.length; i++) {
+        //negative testing 
+
+        if(!obj.hasOwnProperty(srcKeys[i]) || 
+        obj[srcKeys[i]] !== source[srcKeys[i]]) {
+        //if false, return full array, no filtering
+          return false;
+        }
+      }
+      return true;
+    });
+};
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
 
 // ---------------------------------------------------
 // TODO: 
