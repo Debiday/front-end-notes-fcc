@@ -104,8 +104,29 @@ console.log(spinalCase("thisIsSpinalTap"));
 console.log(spinalCase("Teletubbies say Eh-oh"));
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Translate Pig Latin
 // ---------------------------------------------------
+function translatePigLatin(str) {
+  let vowels = "aeiou";
+  if(vowels.indexOf(str.charAt(0)) !== -1) {
+    return str + "way";
+  } else {
+   for(let i = 0; i < str.length; i ++) {
+     if(vowels.indexOf(str[i]) >= 0) {
+       return str.slice(i).concat(str.slice(0, i) + "ay")
+     }
+   }
+   return str + "ay"
+}
+}
+
+
+console.log(translatePigLatin("california"));
+console.log(translatePigLatin("consonant"));
+console.log(translatePigLatin("algorithm"));
+console.log(translatePigLatin("schwartz"));
+console.log(translatePigLatin("rhythm"));
+
 
 // ---------------------------------------------------
 // TODO: 
