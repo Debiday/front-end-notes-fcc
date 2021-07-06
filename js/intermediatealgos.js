@@ -129,8 +129,25 @@ console.log(translatePigLatin("rhythm"));
 
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Search and Replace (for loops)
 // ---------------------------------------------------
+function myReplace(str, before, after) {
+  let editedAfter = ""
+  if(before.charAt(0) === before.charAt(0).toUpperCase()){
+    editedAfter = after.charAt(0).toUpperCase() + after.slice(1);
+      return str.replace(before, editedAfter)
+  } else if (before.charAt(0) === before.charAt(0).toLowerCase() ||
+              after.charAt(0) !==  after.charAt(0).toLowerCase()) {
+                editedAfter = after.charAt(0).toLowerCase() + after.slice(1);
+                  return str.replace(before, editedAfter)
+  }
+  return str.replace(before, after) 
+}
+
+
+console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"));
+console.log(myReplace("He is Sleeping on the couch", "Sleeping", "sitting"));
+
 
 // ---------------------------------------------------
 // TODO: 
