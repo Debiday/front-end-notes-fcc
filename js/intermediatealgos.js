@@ -150,8 +150,28 @@ console.log(myReplace("He is Sleeping on the couch", "Sleeping", "sitting"));
 
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: DNA Pairing
 // ---------------------------------------------------
+function pairElement(str) {
+
+  let dict = {
+  "A": "T",
+  T: "A",
+  G: "C",
+  C: "G" 
+  };
+
+  let result = [];
+  // console.log(dict["T"]);
+
+  for(let i = 0; i < str.length; i ++) {
+    result.push([str[i], dict[str[i]]]);
+    }
+  return result;
+  }
+
+console.log(pairElement("GCG"));
+
 
 // ---------------------------------------------------
 // TODO: 
