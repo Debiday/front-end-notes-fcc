@@ -174,20 +174,90 @@ console.log(pairElement("GCG"));
 
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Missing Letters
 // ---------------------------------------------------
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz"
+  let startIndex = alphabet.indexOf(str[0]);
+  let endIndex = alphabet.indexOf(str.slice(-1));
+  let correctString = alphabet.slice(startIndex, endIndex+1);
+  //diff two strings
+  if (str.includes(correctString)) {
+    return undefined;
+  } else {
+    console.log(correctString.indexOf(str[3]));
+    for(let i = 0; i < str.length; i ++) {
+      if(correctString.indexOf(str[i]) !== str.indexOf(str[i])) {
+        return correctString[i];
+      }
+    }
+  }
+  }
+  
+console.log(fearNotLetter("abce"));
+console.log(fearNotLetter("bcdf"));
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Dictionary
 // ---------------------------------------------------
+function uniteUnique(arr) {
+  //flatten all arrays in order
+  let fullArray = [...arguments].flat();
+  console.log(fullArray);
+  // let fullArray = arr.flat();
+  let dict = {};
+  for(let i = 0; i < fullArray.length; i ++) {
+    if (dict[fullArray[i]] === undefined) {
+      dict[fullArray[i]] = 1;
+    } else if (dict[fullArray[i]] > 0){
+    dict[fullArray[i]] += 1;
+  }
+  }
+  console.log(Object.values(dict), dict);
+}
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Sorted Union (arguments)
 // ---------------------------------------------------
+function uniteUnique(arr) {
+  //flatten all arrays in order
+  let fullArr = [...arguments].flat();
+  // let fullArray = arr.flat();
+  let result = [];
+  for(let i = 0; i < fullArr.length; i++) {
+    if (result.indexOf(fullArr[i]) == -1) {
+      result.push(fullArr[i]);
+    }
+  }
+  return result;
+}
+
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Convert HTML Entities
 // ---------------------------------------------------
+function convertHTML(str) {
+  let dict = {
+    "&" : "&amp;",
+    "<" : "&lt;",
+    ">" : "&gt;",
+    '"' : "&quot;",
+    "'" : "&apos;"
+  };
+
+  let result = "";
+  for(let i = 0; i < str.length; i ++) {
+    if(!str[i].match(/[A-Za-z ]/)){
+      result += dict[str[i]];
+    } if(str[i].match(/[A-Za-z ]/)){
+      result += str[i];
+  }
+  }
+  return result;
+}
 
 // ---------------------------------------------------
 // TODO: 
