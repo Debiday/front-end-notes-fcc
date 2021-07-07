@@ -260,8 +260,31 @@ function convertHTML(str) {
 }
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Sum all Fibonacci
 // ---------------------------------------------------
+function sumFibs(num) {
+  let nums = [0, 1];
+  for(let i = 1; i < num; i++) {
+    let runningSum = nums[i-1] + nums[i];
+    nums.push(runningSum);
+  }
+  let odd = nums.filter(num => {return num%2 !== 0})
+  for(let i = 1; i < num; i++) {
+    //determine index to stop
+    if(odd[i] === num || odd[i-1] < num && odd[i] > num){
+      return odd.splice(0,i).reduce((a, b) => a + b);;
+    }
+  }
+  return odd.reduce((a, b) => a + b);;
+}
+
+console.log(sumFibs(1));
+console.log(sumFibs(10));
+console.log(sumFibs(4));
+console.log(sumFibs(40));
+console.log(sumFibs(75024));
+console.log(sumFibs(75025));
+
 
 // ---------------------------------------------------
 // TODO: 
