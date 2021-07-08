@@ -315,5 +315,52 @@ console.log(sumPrimes(977));
 
 
 // ---------------------------------------------------
+// TODO: Smallest Common Multiple
+// ---------------------------------------------------
+function smallestCommons(arr) {
+  // sort arguments
+  let [min, max] = arr.sort((a,b) => a - b);
+  let numDivisors = max - min + 1;
+  console.log(min, max)
+  // largest possible answer
+  let upperBound = 1;
+  for (let i = min; i <= max; i ++) {
+    upperBound *= i
+  }
+
+  for (let multiple = max; multiple <= upperBound; multiple += max) {
+    //check if every value divides by this multiple
+    let divisorCount = 0;
+    for (let i = min; i <= max; i++) {
+      if (multiple % i === 0) {
+        divisorCount += 1;
+      }
+    }
+    if (divisorCount === numDivisors) {
+      return multiple;
+    }
+  }
+}
+
+console.log(smallestCommons([5,1]));
+
+
+// ---------------------------------------------------
+// TODO: 
+// ---------------------------------------------------
+
+// ---------------------------------------------------
+// TODO: 
+// ---------------------------------------------------
+
+// ---------------------------------------------------
+// TODO: 
+// ---------------------------------------------------
+
+// ---------------------------------------------------
+// TODO: 
+// ---------------------------------------------------
+
+// ---------------------------------------------------
 // TODO: 
 // ---------------------------------------------------
