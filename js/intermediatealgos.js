@@ -391,8 +391,19 @@ binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 0110
 
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Check truthy on ALL elements of a collection
 // ---------------------------------------------------
+function truthCheck(collection, pre) {
+  for(let item in collection){
+    if(!collection[item].hasOwnProperty(pre) || !collection[item][pre]) 
+    return false;
+  } 
+  return true;
+}
+
+console.log(truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex"));
+console.log(truthCheck([{"single": ""}, {"single": "double"}], "single"));
+
 
 // ---------------------------------------------------
 // TODO: 
