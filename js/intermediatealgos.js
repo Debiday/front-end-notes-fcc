@@ -363,8 +363,17 @@ console.log(dropElements([1, 2, 3, 4], function(n) {return n > 5;}));
 
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Flatten multidimensional nested arrays
 // ---------------------------------------------------
+function steamrollArray(arr) {
+  return arr
+  .reduce(function (arr, toFlatten) {
+    return arr.concat(Array.isArray(toFlatten) ? steamrollArray(toFlatten) : toFlatten);
+  }, []);
+  }
+
+steamrollArray([1, [2], [3, [[4]]]]);
+
 
 // ---------------------------------------------------
 // TODO: 
