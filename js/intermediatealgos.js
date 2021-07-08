@@ -346,8 +346,21 @@ console.log(smallestCommons([5,1]));
 
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Remove items that don't pass function
 // ---------------------------------------------------
+function dropElements(arr, func) {
+  let func1 = [...arguments][1];
+  for (let i = 0; i < arr.length; i++) {
+    if (func1(arr[i])) {
+      return arr.slice(i);
+}
+} return [];
+}
+
+console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
+console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;}));
+console.log(dropElements([1, 2, 3, 4], function(n) {return n > 5;}));
+
 
 // ---------------------------------------------------
 // TODO: 
