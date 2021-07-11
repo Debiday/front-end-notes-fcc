@@ -69,11 +69,32 @@ function convertToRoman(num) {
   console.log(convertToRoman(400));
   console.log(convertToRoman(1000));
   console.log(convertToRoman(3999));
-  
+
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Caesars Cipher (ROT13)
 // ---------------------------------------------------
+function rot13(str) {
+    let alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let result = ""
+    for(let i = 0; i < str.length; i ++) {
+      if(str[i].match(/^[A-Z]$/i)) {
+        let newIndex = alpha.indexOf(str[i]) + 13
+        if (newIndex >= 26) {
+          newIndex -= 26
+        }
+        result += alpha[newIndex];
+  
+      } if (!str[i].match(/^[A-Z]$/i)) {
+        result += str[i];
+      }
+    }
+    return result;
+  }
+  
+  console.log(rot13("SERR PBQR PNZC"));
+  console.log(rot13("A"));
+  
 
 // ---------------------------------------------------
 // TODO: 
