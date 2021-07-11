@@ -25,11 +25,51 @@ function palindrome(str) {
   console.log(palindrome("never odd or even") )
   console.log(palindrome("_eye"))
   console.log(palindrome("My age is 0, 0 si ega ym."))
-  
+
 
 // ---------------------------------------------------
-// TODO: 
+// TODO: Convert to Roman
 // ---------------------------------------------------
+function convertToRoman(num) {
+    let dict = {
+      1000 : 'M',
+      500 : 'D',
+      100 : 'C',
+      50 : 'L',
+      10 : 'X',
+      5 : 'V',
+      1 : 'I'
+    }
+  
+    let dictKeys = Object.keys(dict);
+  
+    let roman = "";
+    
+    while (num > 0) {
+      for(let i = 6; i >= 0; i--) {
+        if (num - dictKeys[i] >= 0) {
+          let multiple =  Math.floor(num/dictKeys[i]);
+          for(let j = 0; j < multiple; j++) {
+            roman += dict[dictKeys[i]];
+            num -= dictKeys[i];
+            // console.log(num)
+          } 
+        } 
+      } return roman
+          .replace("DCCCC", "CM")
+          .replace("LXXXX", "XC")
+          .replace("VIIII", "IX")
+          .replace("CCCC", "CD")
+          .replace("XXXX", "XL")
+          .replace("IIII", "IV")
+    }
+  }
+  
+  console.log(convertToRoman(36));
+  console.log(convertToRoman(400));
+  console.log(convertToRoman(1000));
+  console.log(convertToRoman(3999));
+  
 
 // ---------------------------------------------------
 // TODO: 
