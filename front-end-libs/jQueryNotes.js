@@ -3,7 +3,7 @@
 
 
 // Jquery
-// Some functions
+// Some available functions
 
 
 
