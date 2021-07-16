@@ -221,21 +221,121 @@ const CurrentDate = (props) => {
 
 
 /* --------------------------------------------------- */
-/*  */
+/* Array as Props */
 /* --------------------------------------------------- */
+const List = (props) => {
+    { /* Change code below this line */ }
+    return <p>{props.tasks.join(", ")}</p>
+    { /* Change code above this line */ }
+  };
+  
+  class ToDo extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+        <div>
+          <h1>To Do Lists</h1>
+          <h2>Today</h2>
+          { /* Change code below this line */ }
+          <List tasks={["walk dog", "workout"]}/>
+          <h2>Tomorrow</h2>
+          <List tasks={["walk cat", "work", "eat"]}/>
+          { /* Change code above this line */ }
+        </div>
+      );
+    }
+  };
+
 
 /* --------------------------------------------------- */
-/*  */
+/* Default props */
 /* --------------------------------------------------- */
+const ShoppingCart = (props) => {
+    return (
+      <div>
+        <h1>Shopping Cart Component</h1>
+      </div>
+    )
+  };
+  // Change code below this line
+  ShoppingCart.defaultProps = { items: 0 }
+
 
 /* --------------------------------------------------- */
-/*  */
+/* Default props plus overriding */
 /* --------------------------------------------------- */
+const Items = (props) => {
+    return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+  }
+  
+  Items.defaultProps = {
+    quantity: 0
+  }
+  
+  class ShoppingCart extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      { /* Change code below this line */ }
+      return <Items quantity={10}/>
+      { /* Change code above this line */ }
+    }
+  };
+
 
 /* --------------------------------------------------- */
-/*  */
+/* Defining prop types */
 /* --------------------------------------------------- */
+const Items = (props) => {
+    return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+  };
+  
+  // Change code below this line
+  Items.propTypes = { quantity: PropTypes.number.isRequired }
+  // Change code above this line
+  
+  Items.defaultProps = {
+    quantity: 0
+  };
+  
+  class ShoppingCart extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return <Items />
+    }
+  };
+
 
 /* --------------------------------------------------- */
-/*  */
+/* Review: Props/ stateless functional components/ default/ proptype */
 /* --------------------------------------------------- */
+class CampSite extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render() {
+      return (
+        <div>
+          <Camper />
+        </div>
+      );
+    }
+  };
+  // Change code below this line
+  
+  
+  const Camper = (props) => {
+    return <p>{props.name}</p>
+  };
+  
+  Camper.defaultProps = {
+    name: 'CamperBot'
+  }
+  
+  Camper.propTypes = { name: PropTypes.string.isRequired };
+  
