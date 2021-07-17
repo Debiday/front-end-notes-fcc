@@ -5,11 +5,9 @@
 class StatefulComponent extends React.Component {
     constructor(props) {
       super(props);
-      // Only change code below this line
       this.state = {
         name : 'Deborah'
       }
-      // Only change code above this line
     }
     render() {
       return (
@@ -19,15 +17,51 @@ class StatefulComponent extends React.Component {
       );
     }
   };''
-
 /* --------------------------------------------------- */
-/*  */
+/* Render state as a variable/more customization with js */
 /* --------------------------------------------------- */
-
+class MyComponent extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: 'freeCodeCamp'
+      }
+    }
+    render() {
+      const name = this.state.name
+      // More customizations can be added here if needed
+      return (
+        <div>
+          <h1>{name}</h1>
+        </div>
+      );
+    }
+  };
 /* --------------------------------------------------- */
-/*  */
+/* Set state with this.setState */
 /* --------------------------------------------------- */
-
+class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: 'Initial State'
+        };
+        this.HandleClick = this.handleClick.bind(this);
+    }
+    handleClick() {
+        this.setState({
+            name: 'React Rocks!'
+        })
+    }
+    render() {
+        return (
+            <div>
+                <button onClick={this.handleClick}>Click Me</button>
+                <h1>{this.state.name}</h1>
+            </div>
+        );
+    }
+};
 /* --------------------------------------------------- */
 /*  */
 /* --------------------------------------------------- */
