@@ -338,4 +338,111 @@ class CampSite extends React.Component {
   }
   
   Camper.propTypes = { name: PropTypes.string.isRequired };
+
+  // More notes and practice to refresh react concepts
+/* --------------------------------------------------- */
+/* Basic stateful component */
+
+import React from "react";
+import { render } from "react-dom";
+
+/* --------------------------------------------------- */
+class StatefulComponent extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        name : 'Deborah'
+      }
+    }
+    render() {
+      return (
+        <div>
+          <h1>{this.state.name}</h1>
+        </div>
+      );
+    }
+  };''
+/* --------------------------------------------------- */
+/* Render state as a variable/more customization with js */
+/* --------------------------------------------------- */
+class MyComponent extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        name: 'freeCodeCamp'
+      }
+    }
+    render() {
+      const name = this.state.name
+      // More customizations can be added here if needed
+      return (
+        <div>
+          <h1>{name}</h1>
+        </div>
+      );
+    }
+  };
+/* --------------------------------------------------- */
+/* Set state with this.setState */
+/* --------------------------------------------------- */
+class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: 'Initial State'
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick() {
+        this.setState({
+            name: 'React Rocks!'
+        })
+    }
+    render() {
+        return (
+            <div>
+                <button onClick={this.handleClick}>Click Me</button>
+                <h1>{this.state.name}</h1>
+            </div>
+        );
+    }
+};
+/* --------------------------------------------------- */
+/* Using state to toggle and element */
+/* --------------------------------------------------- */
+class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visibility: false
+        };
+        this.toggleVisibility = this.toggleVisibility.bind(this);
+    }
+    toggleVisibility() {
+        this.setState(state => {
+            if (state.visibility === true) {
+                return { visibility: false };
+            } else {
+                return { visibility: true };
+            }
+        });
+    }
+}
+render() {
+    if (this.state.visibility) {
+        return (
+            <div>
+                <button onClick={this.toggleVisibility}>Click Me</button>
+                <h1>Now you see me!</h1>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <button onClick={this.toggleVisibility}>Click Me</button>
+            </div>
+        );
+    }
+ }
+}
   
