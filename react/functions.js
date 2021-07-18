@@ -105,9 +105,39 @@ class MyForm extends React.Component {
     }
 }
 /* --------------------------------------------------- */
-/* */
+/* Pass state as props to Child Components */
 /* --------------------------------------------------- */
+// Notes: Separating state logic from UI logic/ parent >> child
+// Here navbar is the parent holding the state, sharing logic to a <h1> tag
+class myApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: 'CamperBot'
+        }
+    }
+    render() {
+        return (
+            <div>
+                <p>Parent</p>
+                <Navbar name={this.state.name} />
+            </div>
+        );
+    }
+};
 
+class Navbar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div>
+                <h1>Hello, my name is : {this.props.name} </h1>
+            </div>
+        );
+    }
+};
 /* --------------------------------------------------- */
 /* */
 /* --------------------------------------------------- */
