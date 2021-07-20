@@ -260,13 +260,92 @@ class MyComponent extends React.Component {
     }
 };
 /* --------------------------------------------------- */
-/* */
+/* nextProps & shouldComponentUpdate update only even numbers */
 /* --------------------------------------------------- */
+class OnlyEvens extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('Should I update?');
+        if (nextProps.value % 2 == 0) {
+            return true;
+        }
+    }
+    componentDidUpdate() {
+        console.log('Component re-rendered.');
+    }
+    render() {
+        return <h1>{this.props.value}</h1>
+    }
+}
 
+class Controller extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: 0
+        };
+        this.addValue = this.addValue.bind(this);
+        }
+        addValue() {
+            this.setState(state => ({
+                value: state.value + 1
+            }));
+        }
+        render() {
+            return (
+                <div>
+                    <button onClick={this.addValue}>Add</button>
+                    <OnlyEvens value={this.state.value} />
+                </div>
+            );
+        }
+     }
 /* --------------------------------------------------- */
-/* */
+/* Inline styles in react */
 /* --------------------------------------------------- */
+const styles = ({
+    color: "purple",
+    fontSize: 40,
+})
 
+class Colorful extends React.Component {
+    render() {
+        return (
+            <div style={styles}>Style Me!</div>
+        );
+    }
+};
 /* --------------------------------------------------- */
-/* */
+/* Render with if-else condition */
 /* --------------------------------------------------- */
+class myComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            display: true
+        }
+        this.toggleDisplay = this.toggleDisplay.bind(this);
+    }
+    toggleDisplay() {
+        this.setState((state) => ({
+            display: !state.display
+        }));
+    }
+    render() {
+        if(this.state.display) {
+            return (
+                <div>
+                    <button onClick={this.toggleDisplay}>Toggle Display</button>
+                    <h1>Displayed!</h1>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <button onClick={this.toggleDisplay}>Toggle Display</button>
+                </div>
+            )
+        }}
+    };
