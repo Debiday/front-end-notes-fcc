@@ -53,8 +53,48 @@ class CheckUserAge extends React.Component {
     }
 };
 /* --------------------------------------------------- */
-/*  */
+/* Child componenents/ make rendering decisions based on props */
 /* --------------------------------------------------- */
+//child that takes in the props
+class Results extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <h1>{this.props.fiftyFifty ? "You win!" : "You lose!"}</h1>
+        )
+    };
+};
+
+class GameOfChance extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 1
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick() {
+        this.setState(prevState => {
+            return (
+                {
+                    counter: this.state.counter + 1
+                })
+        });
+    }
+    render() {
+        const expression = Math.random() >= .5 ? true : false
+        return (
+            <div>
+                <button onClick={this.handleClick}>Play Again</button>
+                <Results fiftyFifty={expression} />
+                <p>{'Turn: ' + this.state.counter}</p>
+            </div>
+        );
+    }
+}
+
 
 /* --------------------------------------------------- */
 /*  */
