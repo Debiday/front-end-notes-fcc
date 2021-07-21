@@ -8,13 +8,24 @@ const reducer = (state = 5) => {
 
 let store = Redux.createStore(reducer);
 /* --------------------------------------------------- */
-/* */
+/* Get state */
 /* --------------------------------------------------- */
+const store = Redux.createStore(
+    (state = 5) => state
+);
 
+const currentState = store.getState();
 /* --------------------------------------------------- */
-/* */
+/* Define an action creator */
 /* --------------------------------------------------- */
-
+//action creators create objects that represent action events
+const action = {
+    type: 'LOGIN'
+  }
+  // Define an action creator here:
+  function actionCreator() {
+    return action;
+  }
 /* --------------------------------------------------- */
 /* */
 /* --------------------------------------------------- */
