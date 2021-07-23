@@ -101,6 +101,82 @@ const logoutUser = () => {
     }
 };
 /* --------------------------------------------------- */
+/* The Proper Way to Write Action Types? */
+/* --------------------------------------------------- */
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
+const defaultState = {
+    authenticated: false
+};
+
+const authReducer = (state = defaultState, action) => {
+
+    switch (action.type) {
+        case LOGIN:
+            return {
+                authenticated: true
+            }
+        case LOGOUT: 
+            return {
+                authenticated: false
+            }
+        default:
+            return state;
+    }
+};
+
+const store = Redux.createStore(authReducer);
+
+const loginUser = () => {
+    return {
+        type: LOGIN
+    }
+};
+
+const logoutUser = () => {
+    return {
+        type: LOGOUT
+    }
+};
+/* --------------------------------------------------- */
+/* Register a store listener */
+/* --------------------------------------------------- */
+const ADD = 'ADD';
+
+const reducer = (state = 0, action) => {
+    switch(action.type) {
+        case ADD:
+            return state + 1;
+        default:
+            return state;
+    }
+};
+
+const store = Redux.createStore(reducer);
+
+let count = 0;
+
+const incrementCounter = () => count +=1
+store.subscribe(incrementCounter);
+
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+store.dispatch({type: ADD});
+console.log(count);
+//1 //2 //3
+/* --------------------------------------------------- */
+/* */
+/* --------------------------------------------------- */
+
+/* --------------------------------------------------- */
+/* */
+/* --------------------------------------------------- */
+
+
+/* --------------------------------------------------- */
 /* */
 /* --------------------------------------------------- */
 
