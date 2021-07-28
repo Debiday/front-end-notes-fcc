@@ -237,7 +237,7 @@ console.log(store.getState());
 store.dispatch(addNoteText('Hello'));
 console.log(store.getState());
 /* --------------------------------------------------- */
-/* Using middleware to handle async actions */
+/* Using middleware to handle async actions with dispatch */
 /* --------------------------------------------------- */
 const REQUESTING_DATA = 'REQUESTING_DATA'
 const RECEIVED_DATA = 'RECEIVED_DATA'
@@ -246,11 +246,13 @@ const RECEIVED_DATA = 'RECEIVED_DATA'
 const requestingData = () => { return {type: REQUESTING_DATA} }
 const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} } }
 
+//releases state from store (messenger)
 const handleAsync = () => {
-    //releases state from store (messenger)
+    //use dispatch as an argument to set up async actions!
     return function(dispatch) {
         //dispatch request action
         dispatch(requestingData());
+        //simulation
         setTimeout(function() {
             let data = {
                 users: ['Jeff', 'William', 'Alice']
