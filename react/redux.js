@@ -33,7 +33,7 @@ const store = Redux.createStore(
     (state = {login: false}) => state
   );
   
-  const loginAction = () => {
+const loginAction = () => {
     return {
       type: 'LOGIN'
     }
@@ -290,9 +290,49 @@ const store = Redux.createStore(
     Redux.applyMiddleware(ReduxThunk.default)
 );
 /* --------------------------------------------------- */
+/* Writing a counter with Redux */
+/* --------------------------------------------------- */
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
+//defining constants for action types
+
+const counterReducer = (state = 0, action) => {
+    switch(action.type) {
+        case INCREMENT:
+            return state + 1;
+        case DECREMENT: 
+            return state - 1;
+        default: 
+            return state;
+    }
+};
+//counter reducer will inc or dec the state based on action received
+
+const incAction = () => {
+    return {
+        type: 'INCREMENT'
+    };
+};
+
+const decAction = () => {
+    return {
+        type: 'DECREMENT'
+    };
+};
+//these are action creators for each action
+
+
+const store = Redux.createStore(counterReducers);
+// note counterReducer passed in as argument
+/* --------------------------------------------------- */
 /* */
 /* --------------------------------------------------- */
-
+/* --------------------------------------------------- */
+/* */
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* */
+/* --------------------------------------------------- */
 /* --------------------------------------------------- */
 /* */
 /* --------------------------------------------------- */
