@@ -244,7 +244,7 @@ const RECEIVED_DATA = 'RECEIVED_DATA'
 
 //method that holds actions
 const requestingData = () => { return {type: REQUESTING_DATA} }
-const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} } }
+const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} } 
 
 //releases state from store (messenger)
 const handleAsync = () => {
