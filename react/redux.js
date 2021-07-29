@@ -356,11 +356,46 @@ const store = Redux.createStore(immutableReducer);
 /* --------------------------------------------------- */
 /* Enforcing state immutability with the spread operator */
 /* --------------------------------------------------- */
+const immutableReducer = (state = ['Do not mutate state!'], action) => {
+    switch(action.type) {
+        case 'ADD_TO_DO':
+            let arr = [...state, action.todo]
+            return arr
+        default:
+            return state;
+    }
+};
 
+const addToDo = (todo) => {
+    return {
+        type: 'ADD_TO_DO',
+        todo
+    }
+}
 
+const store = Redux.createStore(immutableReducer);
 /* --------------------------------------------------- */
-/* */
+/* Remove an Item from an array*/
 /* --------------------------------------------------- */
+const immutableReducer = (state = [0,1,2,3,4,5], action) => {
+    switch(action.type) {
+        case 'REMOVE_ITEM':
+            let arr = [...state]
+            let removed = arr.slice(0, action.index).concat(arr.slice(action.index+1, arr.length));
+            return removed
+        default:
+            return state;
+    }
+};
+
+const removeItem = (index) => {
+    return {
+        type: 'REMOVE_ITEM',
+        index
+    }
+}
+
+const store = Redux.createStore(immutableReducer);
 /* --------------------------------------------------- */
-/* */
+/* Copy an object with Object.assign()*/
 /* --------------------------------------------------- */
