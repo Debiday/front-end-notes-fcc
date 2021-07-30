@@ -140,13 +140,33 @@ class AppWrapper extends React.Component {
     }
 };
 /* --------------------------------------------------- */
-/* */
+/* mapStateToProps & mapDispatchToProps */
 /* --------------------------------------------------- */
+//getting methods from the redux store?
+const state = [];
 
+const mapStateToProps = state => {
+    return {
+        messages: state
+    }
+}
 /* --------------------------------------------------- */
-/* */
+/* Map dispatch to props */
 /* --------------------------------------------------- */
+const addMessage = (message) => {
+    return {
+        type: 'ADD',
+        message: message
+    }
+};
 
+const mapDispatchToProps = dispatch => {
+    return {
+        submitNewMessage: (message) => {
+            dispatch(addMessage(message))
+        }
+    }
+}
 /* --------------------------------------------------- */
 /* */
 /* --------------------------------------------------- */
