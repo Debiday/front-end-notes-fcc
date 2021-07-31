@@ -168,7 +168,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 /* --------------------------------------------------- */
-/* Connect methid to mapStateToProps and mapDispatchToProps */
+/* Connect method to mapStateToProps and mapDispatchToProps */
 /* --------------------------------------------------- */
 const addMessage = (message) => {
     return {
@@ -205,9 +205,107 @@ const connect = ReactRedux.connect;
 //TODO: Note this!
 const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(Presentational)
 /* --------------------------------------------------- */
-/* */
+/* Full? Connect redux to the messages app */
 /* --------------------------------------------------- */
+//Redux
+const ADD = 'ADD';
 
+const addMessage = (message) => {
+    return {
+        type: ADD,
+        message: message
+    }
+};
+
+const messageReducer = (state = [], action) => {
+    switch (action.type) {
+        case ADD:
+            return [
+                ...state, action.message
+            ];
+        default: 
+            return state;
+    }
+};
+
+const store = Redux.createStore(messageReducer);
+
+//React
+class Presentational extends React.component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            input: '',
+            messages: []
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.submitMessage = this.submitMessage.bind(this);
+    }
+    handleChange(event) {
+        this.setState({
+            input: event.target.value
+        });
+    }
+    submitMessage() {
+        this.setState((state) => {
+            const currentMessage = state.input;
+            return {
+                input: '',
+                messages: state.messages.concat(currentMessage)
+            };
+        });
+    }
+    render() {
+        return (
+            <div>
+                <h2>Type in a new message:</h2>
+                <input 
+                    value={this.state.input}
+                    onChange={this.handleChange}/><br/>
+                <button onClick={this.submitMessage}>Submit</button>
+                <ul>
+                    {this.state.messages.map((message, idx) => {
+                        return (
+                            <li key={idx}>{message}</li>
+                        )
+                    })
+                    }
+                </ul>
+            </div>
+        );
+    }
+ };
+
+ //React+redux
+ const mapStateToProps = (state) => {
+     return { messages: state }
+ };
+
+ const mapDispatchToProps = (dispatch) => {
+     return {
+         submitNewMessage: (newMessage) => {
+             dispatch(addMessage(newMessage))
+         }
+     }
+ };
+
+ const Provider = ReactRedux.Provider;
+ const connect = ReactRedux.connect;
+
+ const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational)
+
+ class AppWrapper extends React.Component {
+     constructor(props) {
+         super(props);
+     }
+     render() {
+         return (
+             <Provider store = {store}>
+                 <Container />
+             </Provider>
+         );
+     }
+ };
 /* --------------------------------------------------- */
 /* */
 /* --------------------------------------------------- */
